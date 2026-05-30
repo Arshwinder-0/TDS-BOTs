@@ -858,9 +858,13 @@
           card.innerHTML = `
             <div>
               <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 rounded-2xl flex items-center justify-center ${p.colorClass}">
-                  <i data-lucide="${p.icon}" class="w-5 h-5"></i>
-                </div>
+                <div class="w-12 h-12 rounded-2xl overflow-hidden flex items-center justify-center ${p.colorClass}">
+  ${
+    p.image
+      ? `<img src="${p.image}" class="w-full h-full object-cover">`
+      : `<i data-lucide="${p.icon}" class="w-5 h-5"></i>`
+  }
+</div>
                 
                 <!-- Display Large Pricing clearly (INR + OwO equivalents) -->
                 <div class="text-right">
