@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TDS BOTs | Professional Discord Bots & Setup Store</title>
+  <title>TDS BOTs | Premium Discord Store</title>
   
-  <!-- Font Poppins -->
+  <!-- Poppins Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -44,12 +44,6 @@
     ::-webkit-scrollbar-track {
       background: #0F1117;
     }
-    .dark ::-webkit-scrollbar-track {
-      background: #0F1117;
-    }
-    html:not(.dark) ::-webkit-scrollbar-track {
-      background: #F3F4F6;
-    }
     ::-webkit-scrollbar-thumb {
       background: #5865F2;
       border-radius: 4px;
@@ -58,409 +52,424 @@
       background: #404eed;
     }
 
-    /* Gradient animation */
-    @keyframes pulse-glow {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 0.9; }
+    /* Floating Logo Animation */
+    @keyframes floatLogo {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-12px) rotate(1deg);
+      }
     }
-    .glow-effect {
-      animation: pulse-glow 3s infinite;
+    .floating-logo-container {
+      animation: floatLogo 4.5s ease-in-out infinite;
     }
+
+    /* Premium Pulse Neon Glow */
+    .neon-logo-glow {
+      box-shadow: 0 0 35px 5px rgba(0, 0, 0, 0.9), 0 0 25px 8px rgba(88, 101, 242, 0.45);
+      animation: neonPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes neonPulse {
+      0% {
+        box-shadow: 0 0 35px 5px rgba(0, 0, 0, 0.9), 0 0 20px 5px rgba(88, 101, 242, 0.4);
+      }
+      100% {
+        box-shadow: 0 0 45px 8px rgba(0, 0, 0, 0.95), 0 0 35px 15px rgba(88, 101, 242, 0.65);
+      }
+    }
+
+    /* Entry Animations */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Staggered Delay Utilities */
+    .delay-100 { animation-delay: 100ms; }
+    .delay-200 { animation-delay: 200ms; }
+    .delay-300 { animation-delay: 300ms; }
   </style>
 </head>
-<body class="bg-darkBlack text-gray-200 font-sans transition-colors duration-300 dark:bg-darkBlack dark:text-gray-200 light:bg-gray-50 light:text-gray-800">
+<body class="bg-darkBlack text-gray-200 font-sans transition-colors duration-300">
 
-  <!-- TOP BAR & NAVIGATION -->
-  <nav class="sticky top-0 z-40 bg-darkGray/90 dark:bg-darkGray/90 light:bg-white/90 backdrop-blur-md border-b border-gray-800 dark:border-gray-800 light:border-gray-200 transition-colors">
+  <!-- FULL-WIDTH RESPONSIVE HERO BANNER -->
+  <div class="w-full relative overflow-hidden bg-darkBlack border-b border-gray-900">
+    <!-- fallback gradient background if the gif doesn't resolve instantly -->
+    <div class="absolute inset-0 bg-gradient-to-r from-darkBlack via-blurple/10 to-darkBlack z-0 pointer-events-none"></div>
+    <img 
+      src="banner.gif" 
+      alt="Hero Banner" 
+      class="w-full h-auto min-h-[140px] max-h-[420px] object-cover relative z-10 block opacity-85 hover:opacity-100 transition-opacity duration-500"
+      onerror="this.style.display='none';"
+    />
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-40 bg-darkGray/90 backdrop-blur-md border-b border-gray-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 sm:h-20">
-        <!-- Logo Area -->
+        
+        <!-- Logo Area (Top Left) -->
         <a href="#" class="flex items-center space-x-3 group">
-          <div class="w-10 h-10 rounded-xl overflow-hidden bg-blurple flex items-center justify-center border border-blurple/50 shadow-lg shadow-blurple/20 transition-transform group-hover:scale-105">
-            <!-- Using custom SVGs & styled containers for a clean design. Uses a default animated look. -->
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=200&auto=format&fit=crop" alt="TDS" class="w-full h-full object-cover">
+          <div class="w-10 h-10 rounded-xl overflow-hidden bg-darkBlack flex items-center justify-center border border-gray-800 shadow-md transition-transform group-hover:scale-105">
+            <!-- Dynamically Loaded Image Base -->
+            <img id="topLeftLogo" src="logo.gif" alt="TDS Logo" class="w-full h-full object-cover">
           </div>
           <div>
-            <span class="text-xl font-extrabold tracking-wider text-white dark:text-white light:text-darkBlack flex items-center gap-1.5">
-              TDS <span class="text-blurple">BOTS</span>
+            <span class="text-lg font-extrabold tracking-wider text-white flex items-center gap-1.5">
+              TDS <span class="text-blurple">BOTs</span>
             </span>
-            <p class="text-[10px] text-gray-400 dark:text-gray-400 light:text-gray-500 font-medium tracking-wide">PREMIUM SERVICES</p>
+            <p class="text-[9px] text-gray-400 font-medium tracking-widest uppercase">Premium Store</p>
           </div>
         </a>
 
-        <!-- Menu Navigation (Desktop) -->
+        <!-- Desktop Menu Nav -->
         <div class="hidden md:flex items-center space-x-8">
           <a href="#products" class="text-sm font-semibold hover:text-blurple transition-colors">Products</a>
-          <a href="#about" class="text-sm font-semibold hover:text-blurple transition-colors">About Us</a>
+          <a href="#about" class="text-sm font-semibold hover:text-blurple transition-colors">About</a>
           <a href="#reviews" class="text-sm font-semibold hover:text-blurple transition-colors">Reviews</a>
           <a href="#faq" class="text-sm font-semibold hover:text-blurple transition-colors">FAQ</a>
           <a href="#contact" class="text-sm font-semibold hover:text-blurple transition-colors">Contact</a>
         </div>
 
-        <!-- System Controls (Theme Toggle, Join Discord) -->
+        <!-- Join Discord -->
         <div class="flex items-center space-x-4">
-          <!-- Light/Dark Toggle -->
-          <button id="themeToggle" class="p-2 rounded-lg bg-gray-800 dark:bg-gray-800 light:bg-gray-200 hover:text-blurple transition-colors" aria-label="Toggle Theme">
-            <i data-lucide="sun" id="sunIcon" class="hidden w-5 h-5"></i>
-            <i data-lucide="moon" id="moonIcon" class="w-5 h-5"></i>
-          </button>
-
-          <!-- CTA Join Discord -->
-          <a href="https://discord.gg/xJXnrvkjyX" target="_blank" class="hidden sm:inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-blurple hover:bg-opacity-90 text-white font-semibold text-sm transition-all shadow-md hover:shadow-blurple/20 hover:-translate-y-0.5">
+          <a href="https://discord.gg/xJXnrvkjyX" target="_blank" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-blurple hover:bg-opacity-90 text-white font-semibold text-sm transition-all shadow-md hover:shadow-blurple/20 hover:-translate-y-0.5">
             <i data-lucide="message-square" class="w-4 h-4"></i>
-            <span>Join Server</span>
+            <span class="hidden sm:inline">Join Server</span>
           </a>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <header class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 border-b border-gray-800 dark:border-gray-800 light:border-gray-200">
-    <!-- Glow effects -->
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-blurple/10 blur-[120px] glow-effect pointer-events-none"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-cyan/10 blur-[120px] glow-effect pointer-events-none"></div>
+  <!-- MAIN HERO TEXT & FLOATING CENTER LOGO -->
+  <header class="relative py-12 lg:py-20 border-b border-gray-850 overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blurple/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <!-- Content -->
-        <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-          <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-blurple/10 border border-blurple/30 text-blurple text-xs font-semibold uppercase tracking-wider">
-            <span class="w-2 h-2 rounded-full bg-blurple animate-ping"></span>
-            <span>Your Ultimate Discord Solution Hub</span>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      
+      <!-- 5 & 6. FLOATING CENTER LOGO with Neon/Black Glow -->
+      <div class="mb-8 flex justify-center">
+        <div class="floating-logo-container">
+          <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden bg-darkBlack border-4 border-blurple flex items-center justify-center neon-logo-glow">
+            <img id="floatingCenterLogo" src="logo.gif" alt="Center Floating Logo" class="w-full h-full object-cover">
           </div>
-          
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white dark:text-white light:text-darkBlack leading-tight">
-            Elevate Your Discord <br class="hidden sm:inline">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blurple to-cyan">Server Experience</span>
-          </h1>
+        </div>
+      </div>
 
-          <p class="text-base sm:text-lg text-gray-400 dark:text-gray-400 light:text-gray-600 max-w-2xl mx-auto lg:mx-0">
-            Browse, understand, and purchase custom Discord bots, professional server setups, license keys, and OwO currency services in just a few clicks. 
-          </p>
+      <div class="max-w-3xl mx-auto space-y-6 fade-in-up">
+        <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-blurple/10 border border-blurple/30 text-blurple text-xs font-semibold uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-blurple animate-ping"></span>
+          <span>Verified Discord Integration Services</span>
+        </div>
+        
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+          Enhance Your Communities with <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blurple via-cyan to-gold">TDS BOTs Automation</span>
+        </h1>
 
-          <!-- Interactive Stat Counters -->
-          <div class="flex flex-wrap justify-center lg:justify-start gap-6 py-4">
-            <div class="flex items-center space-x-3 bg-darkGray/60 dark:bg-darkGray/60 light:bg-gray-100 border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-2xl px-5 py-3">
-              <div class="p-2 bg-blurple/10 rounded-lg text-blurple">
-                <i data-lucide="users" class="w-5 h-5"></i>
-              </div>
-              <div class="text-left">
-                <p class="text-xs text-gray-500 font-medium">Server Members</p>
-                <p id="memberCounter" class="text-base font-bold text-white dark:text-white light:text-darkBlack">1,420</p>
-              </div>
+        <p class="text-sm sm:text-base text-gray-400 max-w-xl mx-auto">
+          Explore customized high-performance Discord bots, modern layouts, license keys, and premium currency solutions designed to support your server's growth.
+        </p>
+
+        <!-- Dynamic Counter Display -->
+        <div class="flex flex-wrap justify-center gap-4 py-3">
+          <!-- Total Members (Manually editable in admin panel) -->
+          <div class="flex items-center space-x-3 bg-darkGray border border-gray-800 rounded-2xl px-5 py-3">
+            <div class="p-2 bg-blurple/10 rounded-lg text-blurple">
+              <i data-lucide="users" class="w-5 h-5"></i>
             </div>
-
-            <div class="flex items-center space-x-3 bg-darkGray/60 dark:bg-darkGray/60 light:bg-gray-100 border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-2xl px-5 py-3">
-              <div class="p-2 bg-cyan/10 rounded-lg text-cyan">
-                <i data-lucide="zap" class="w-5 h-5"></i>
-              </div>
-              <div class="text-left">
-                <p class="text-xs text-gray-500 font-medium">Online Users</p>
-                <p id="onlineCounter" class="text-base font-bold text-white dark:text-white light:text-darkBlack">147</p>
-              </div>
-            </div>
-
-            <div class="flex items-center space-x-3 bg-darkGray/60 dark:bg-darkGray/60 light:bg-gray-100 border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-2xl px-5 py-3">
-              <div class="p-2 bg-gold/10 rounded-lg text-gold">
-                <i data-lucide="star" class="w-5 h-5"></i>
-              </div>
-              <div class="text-left">
-                <p class="text-xs text-gray-500 font-medium">Client Rating</p>
-                <p class="text-base font-bold text-white dark:text-white light:text-darkBlack">4.9 / 5.0</p>
-              </div>
+            <div class="text-left">
+              <p class="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Total Members</p>
+              <p id="dispTotalMembers" class="text-sm font-extrabold text-white">100</p>
             </div>
           </div>
 
-          <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
-            <a href="#products" class="px-8 py-4 bg-blurple hover:bg-opacity-95 text-white font-bold rounded-2xl transition-all shadow-lg shadow-blurple/25 text-center hover:-translate-y-0.5">
-              Explore Store
-            </a>
-            <a href="#about" class="px-8 py-4 bg-transparent border border-gray-700 dark:border-gray-700 light:border-gray-300 hover:border-gray-600 text-white dark:text-white light:text-gray-800 font-bold rounded-2xl transition-all text-center">
-              Learn More
-            </a>
+          <!-- Active Members (Calculated) -->
+          <div class="flex items-center space-x-3 bg-darkGray border border-gray-800 rounded-2xl px-5 py-3">
+            <div class="p-2 bg-cyan/10 rounded-lg text-cyan">
+              <i data-lucide="activity" class="w-5 h-5"></i>
+            </div>
+            <div class="text-left">
+              <p class="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Active Members</p>
+              <p id="dispActiveMembers" class="text-sm font-extrabold text-white">40</p>
+            </div>
+          </div>
+
+          <!-- Online Members (Calculated) -->
+          <div class="flex items-center space-x-3 bg-darkGray border border-gray-800 rounded-2xl px-5 py-3">
+            <div class="p-2 bg-gold/10 rounded-lg text-gold">
+              <i data-lucide="zap" class="w-5 h-5"></i>
+            </div>
+            <div class="text-left">
+              <p class="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Online Members</p>
+              <p id="dispOnlineMembers" class="text-sm font-extrabold text-white">15</p>
+            </div>
           </div>
         </div>
 
-        <!-- Banner Gif Display -->
-        <div class="lg:col-span-5 relative">
-          <div class="relative mx-auto max-w-[400px] lg:max-w-none rounded-3xl overflow-hidden border-2 border-blurple/30 shadow-2xl shadow-blurple/10 bg-darkGray">
-            <!-- Structural Placeholder Banner simulating actual animated content -->
-            <div class="aspect-video sm:aspect-square flex flex-col justify-between p-6 bg-gradient-to-br from-blurple/40 to-darkBlack relative group">
-              <div class="absolute inset-0 bg-cover bg-center opacity-80 mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=800&auto=format&fit=crop');"></div>
-              <div class="absolute inset-0 bg-gradient-to-t from-darkBlack via-transparent to-transparent"></div>
-              
-              <!-- Floating logo representation on top of the GIF/Image -->
-              <div class="relative z-10 flex justify-between items-start">
-                <span class="px-3 py-1 rounded-full bg-darkBlack/80 text-xs font-semibold text-white tracking-widest uppercase border border-white/10">Official</span>
-                <div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
-                  <i data-lucide="bot" class="w-6 h-6 text-blurple"></i>
-                </div>
-              </div>
-
-              <div class="relative z-10 space-y-2 mt-20">
-                <h3 class="text-2xl font-bold text-white leading-tight">TDS BOTs</h3>
-                <p class="text-xs text-gray-300">Modern setups, automation, performance solutions, and unparalleled user security.</p>
-              </div>
-            </div>
-          </div>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 pt-2">
+          <a href="#products" class="px-8 py-3.5 bg-blurple hover:bg-opacity-95 text-white font-bold rounded-xl transition-all shadow-lg shadow-blurple/25 text-center hover:-translate-y-0.5">
+            View Store Catalog
+          </a>
+          <a href="#about" class="px-8 py-3.5 bg-transparent border border-gray-750 text-gray-300 hover:text-white font-bold rounded-xl transition-all text-center hover:bg-gray-800/40">
+            Learn More
+          </a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- STORE & PRODUCTS SECTION -->
-  <section id="products" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white dark:text-white light:text-darkBlack">Explore Store Catalog</h2>
-      <p class="text-gray-400 dark:text-gray-400 light:text-gray-600">
-        Choose from custom developer bots, professionally stylized server structures, verified activation keys, or top-tier currency options.
+  <!-- STOREFRONT SECTION -->
+  <section id="products" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto space-y-4 mb-10 fade-in-up">
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Store Catalog & Rates</h2>
+      <p class="text-sm text-gray-400">
+        Review our list of services, transparent rates, and OwO coin configurations. All transaction operations are hosted securely via custom tickets.
       </p>
     </div>
 
-    <!-- Search & Filters Toolbar -->
-    <div class="bg-darkGray dark:bg-darkGray light:bg-white border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-3xl p-4 sm:p-6 mb-12 shadow-md flex flex-col lg:flex-row gap-4 items-center justify-between">
+    <!-- Filters and Searches -->
+    <div class="bg-darkGray border border-gray-800 rounded-3xl p-4 sm:p-6 mb-10 shadow-md flex flex-col lg:flex-row gap-4 items-center justify-between fade-in-up delay-100">
       
-      <!-- Categories -->
+      <!-- Category Buttons -->
       <div class="flex flex-wrap gap-2 w-full lg:w-auto justify-start">
-        <button onclick="filterCategory('all')" data-category-btn="all" class="category-btn active px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all bg-blurple text-white">
+        <button onclick="filterCategory('all')" data-category-btn="all" class="category-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-blurple text-white">
           All Products
         </button>
-        <button onclick="filterCategory('owo')" data-category-btn="owo" class="category-btn px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all bg-gray-800 dark:bg-gray-800 light:bg-gray-100 text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-white dark:hover:text-white light:hover:text-darkBlack">
+        <button onclick="filterCategory('owo')" data-category-btn="owo" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-darkBlack text-gray-400 hover:text-white hover:bg-gray-800">
           OwO Currency
         </button>
-        <button onclick="filterCategory('keys')" data-category-btn="keys" class="category-btn px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all bg-gray-800 dark:bg-gray-800 light:bg-gray-100 text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-white dark:hover:text-white light:hover:text-darkBlack">
+        <button onclick="filterCategory('keys')" data-category-btn="keys" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-darkBlack text-gray-400 hover:text-white hover:bg-gray-800">
           Keys
         </button>
-        <button onclick="filterCategory('bots')" data-category-btn="bots" class="category-btn px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all bg-gray-800 dark:bg-gray-800 light:bg-gray-100 text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-white dark:hover:text-white light:hover:text-darkBlack">
+        <button onclick="filterCategory('bots')" data-category-btn="bots" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-darkBlack text-gray-400 hover:text-white hover:bg-gray-800">
           Bots
         </button>
-        <button onclick="filterCategory('server-setup')" data-category-btn="server-setup" class="category-btn px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all bg-gray-800 dark:bg-gray-800 light:bg-gray-100 text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-white dark:hover:text-white light:hover:text-darkBlack">
+        <button onclick="filterCategory('server-setup')" data-category-btn="server-setup" class="category-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-darkBlack text-gray-400 hover:text-white hover:bg-gray-800">
           Server Setup
         </button>
       </div>
 
       <!-- Search Input -->
       <div class="relative w-full lg:w-80">
-        <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500"></i>
+        <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-500"></i>
         <input 
           type="text" 
           id="searchInput" 
-          placeholder="Search products..." 
-          class="w-full bg-darkBlack dark:bg-darkBlack light:bg-gray-50 text-white dark:text-white light:text-darkBlack rounded-2xl pl-12 pr-4 py-3 border border-gray-800 dark:border-gray-800 light:border-gray-300 focus:outline-none focus:border-blurple transition-colors text-sm"
+          placeholder="Search items..." 
+          class="w-full bg-darkBlack text-white rounded-xl pl-11 pr-4 py-2.5 border border-gray-800 focus:outline-none focus:border-blurple transition-colors text-sm"
         >
       </div>
     </div>
 
-    <!-- Products Grid -->
-    <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Generated dynamically by JS -->
+    <!-- Responsive Products Grid (7. Proper Grid Columns & No Overflows) -->
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 fade-in-up delay-200">
+      <!-- Injected Dynamically by JS -->
     </div>
 
     <!-- Empty State -->
-    <div id="emptyState" class="hidden text-center py-20">
-      <div class="w-16 h-16 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-500">
-        <i data-lucide="package-search" class="w-8 h-8"></i>
+    <div id="emptyState" class="hidden text-center py-16">
+      <div class="w-12 h-12 bg-gray-850 rounded-full flex items-center justify-center mx-auto mb-3 text-gray-500">
+        <i data-lucide="package-search" class="w-6 h-6"></i>
       </div>
-      <h3 class="text-xl font-bold text-white dark:text-white light:text-darkBlack">No products found</h3>
-      <p class="text-gray-400 mt-2">Try checking for spelling errors or choosing another tab.</p>
+      <h3 class="text-lg font-bold text-white">No products found</h3>
+      <p class="text-xs text-gray-500 mt-1">Please refine your search query or check alternative category filters.</p>
     </div>
   </section>
 
   <!-- ABOUT SECTION -->
-  <section id="about" class="py-20 border-t border-gray-850 bg-darkGray/40 dark:bg-darkGray/40 light:bg-gray-100/50">
+  <section id="about" class="py-16 bg-darkGray/40 border-t border-gray-850">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
         <!-- Text details -->
-        <div class="lg:col-span-6 space-y-6">
+        <div class="lg:col-span-6 space-y-5">
           <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-cyan/10 border border-cyan/30 text-cyan text-xs font-semibold uppercase tracking-wider">
-            <span>Premium Performance</span>
+            <span>Our Service Standard</span>
           </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white dark:text-white light:text-darkBlack">Who are TDS BOTs?</h2>
-          <p class="text-gray-400 dark:text-gray-400 light:text-gray-600 leading-relaxed">
-            We specialize in providing high-grade Discord resources to transform community environments into feature-rich, beautiful, and secure platforms. From customizable AI chat mechanics, robust auth security modules, layout upgrades to gaming server currency, we package professional-grade design with instant performance setups.
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">High Performance & Integrity</h2>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            We are dedicated to establishing fast, secure, and modern resources for growing Discord communities. From high-grade custom automation scripts, anti-nuke modules, and visual role hierarchies to safe gaming currencies, our configurations are customized to integrate smoothly into any environment.
           </p>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-            <div class="p-5 bg-darkGray dark:bg-darkGray light:bg-white border border-gray-850 dark:border-gray-850 light:border-gray-200 rounded-2xl space-y-2">
-              <div class="text-blurple"><i data-lucide="timer" class="w-6 h-6"></i></div>
-              <h4 class="font-bold text-white dark:text-white light:text-darkBlack">1-3 Hours Average Delivery</h4>
-              <p class="text-xs text-gray-400 dark:text-gray-400 light:text-gray-500">Most configurations & currency operations complete rapidly, with a guaranteed max threshold of 48 hours.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-4 bg-darkGray border border-gray-800 rounded-2xl space-y-2">
+              <div class="text-blurple"><i data-lucide="timer" class="w-5 h-5"></i></div>
+              <h4 class="text-sm font-bold text-white">Average Delivery (1-3 hrs)</h4>
+              <p class="text-xs text-gray-500 leading-relaxed">Most operations are fully processed and deployed rapidly within hours, up to a guaranteed maximum of 48 hours.</p>
             </div>
 
-            <div class="p-5 bg-darkGray dark:bg-darkGray light:bg-white border border-gray-850 dark:border-gray-850 light:border-gray-200 rounded-2xl space-y-2">
-              <div class="text-cyan"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
-              <h4 class="font-bold text-white dark:text-white light:text-darkBlack">Secure Infrastructure</h4>
-              <p class="text-xs text-gray-400 dark:text-gray-400 light:text-gray-500">Anti-nuke modules, onboarding structures, and robust authentication protections to guard your users perfectly.</p>
+            <div class="p-4 bg-darkGray border border-gray-800 rounded-2xl space-y-2">
+              <div class="text-cyan"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+              <h4 class="text-sm font-bold text-white">Anti-Abuse Architectures</h4>
+              <p class="text-xs text-gray-500 leading-relaxed">Advanced onboarding scripts and anti-spam protocols designed to guard your community and staff directories securely.</p>
             </div>
           </div>
         </div>
 
-        <!-- Dynamic Why Choose Us layout -->
+        <!-- Additional layout information -->
         <div class="lg:col-span-6 space-y-4">
-          <div class="p-6 bg-darkGray dark:bg-darkGray light:bg-white border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-3xl flex items-start space-x-4">
-            <div class="p-3 bg-gold/10 rounded-2xl text-gold shrink-0">
-              <i data-lucide="gem" class="w-6 h-6"></i>
+          <div class="p-5 bg-darkGray border border-gray-800 rounded-2xl flex items-start space-x-4 hover:border-gray-750 transition-all">
+            <div class="p-2.5 bg-gold/10 rounded-xl text-gold shrink-0">
+              <i data-lucide="gem" class="w-5.5 h-5.5"></i>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-white dark:text-white light:text-darkBlack">Verified High-Value Packages</h3>
-              <p class="text-sm text-gray-400 dark:text-gray-400 light:text-gray-500 mt-1">
-                Maximize the quality of your infrastructure. Our setups include customizable welcome themes, automations, and premium custom names/pfps.
-              </p>
+              <h3 class="text-sm font-bold text-white">Verified Pricing Conversion</h3>
+              <p class="text-xs text-gray-400 mt-1">We transparently represent all custom packages in regional fiat configurations as well as standard in-game currency configurations.</p>
             </div>
           </div>
 
-          <div class="p-6 bg-darkGray dark:bg-darkGray light:bg-white border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-3xl flex items-start space-x-4">
-            <div class="p-3 bg-blurple/10 rounded-2xl text-blurple shrink-0">
-              <i data-lucide="life-buoy" class="w-6 h-6"></i>
+          <div class="p-5 bg-darkGray border border-gray-800 rounded-2xl flex items-start space-x-4 hover:border-gray-750 transition-all">
+            <div class="p-2.5 bg-blurple/10 rounded-xl text-blurple shrink-0">
+              <i data-lucide="refresh-cw" class="w-5.5 h-5.5"></i>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-white dark:text-white light:text-darkBlack">Lifetime Key Policy</h3>
-              <p class="text-sm text-gray-400 dark:text-gray-400 light:text-gray-500 mt-1">
-                Buy with absolute ease of mind. Keys purchased include full replacement setups if licensing changes occur.
-              </p>
-            </div>
-          </div>
-
-          <div class="p-6 bg-darkGray dark:bg-darkGray light:bg-white border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-3xl flex items-start space-x-4">
-            <div class="p-3 bg-cyan/10 rounded-2xl text-cyan shrink-0">
-              <i data-lucide="headset" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <h3 class="text-lg font-bold text-white dark:text-white light:text-darkBlack">Direct Dedicated Ticket Support</h3>
-              <p class="text-sm text-gray-400 dark:text-gray-400 light:text-gray-500 mt-1">
-                Every purchase begins with a custom support ticket in our verified Guild server. Your delivery tracking is clear and monitored.
-              </p>
+              <h3 class="text-sm font-bold text-white">Lifetime Key Warranties</h3>
+              <p class="text-xs text-gray-400 mt-1">If structural platform adjustments restrict key functionalities, replacements are issued free of charge inside active tickets.</p>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- REVIEWS SECTION -->
-  <section id="reviews" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white dark:text-white light:text-darkBlack">Client Testimonials</h2>
-      <p class="text-gray-400 dark:text-gray-400 light:text-gray-600">See what Discord server owners and users write about our setups and swift execution.</p>
+  <!-- TESTIMONIALS SECTION -->
+  <section id="reviews" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Customer Reviews</h2>
+      <p class="text-xs text-gray-400">See what clients and server managers share regarding our setup speeds and communication.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Review 1 -->
-      <div class="p-6 bg-darkGray dark:bg-darkGray light:bg-white border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-3xl flex flex-col justify-between">
+      <!-- Testimonial 1 -->
+      <div class="p-5 bg-darkGray border border-gray-800 rounded-2xl flex flex-col justify-between hover:border-blurple/30 transition-all">
         <div>
-          <div class="flex items-center space-x-1 text-gold mb-4">
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          <div class="flex items-center space-x-1 text-gold mb-3">
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
           </div>
-          <p class="text-sm text-gray-300 dark:text-gray-300 light:text-gray-600 italic">"The Premium Setup + Personal Bot package exceeded expectations. Anti-nuke systems are flawless and the AI chatbot responds so fast. Configured on my server in less than 2 hours!"</p>
+          <p class="text-xs text-gray-300 italic">"The setup is extremely clean. The onboarding systems and the music bot integrations run without issues. Highly recommended."</p>
         </div>
-        <div class="flex items-center space-x-3 mt-6 pt-6 border-t border-gray-800 dark:border-gray-800 light:border-gray-100">
-          <div class="w-10 h-10 rounded-full bg-blurple flex items-center justify-center font-bold text-white">
+        <div class="flex items-center space-x-3 mt-5 pt-4 border-t border-gray-800">
+          <div class="w-8 h-8 rounded-full bg-blurple flex items-center justify-center text-xs font-bold text-white">
             JD
           </div>
           <div>
-            <h4 class="text-sm font-bold text-white dark:text-white light:text-darkBlack">Jaden_Dev</h4>
-            <p class="text-xs text-gray-500">Guild Owner (12k Members)</p>
+            <h4 class="text-xs font-bold text-white">Jack_Dev</h4>
+            <p class="text-[10px] text-gray-500">Guild Administrator</p>
           </div>
         </div>
       </div>
 
-      <!-- Review 2 -->
-      <div class="p-6 bg-darkGray dark:bg-darkGray light:bg-white border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-3xl flex flex-col justify-between">
+      <!-- Testimonial 2 -->
+      <div class="p-5 bg-darkGray border border-gray-800 rounded-2xl flex flex-col justify-between hover:border-blurple/30 transition-all">
         <div>
-          <div class="flex items-center space-x-1 text-gold mb-4">
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          <div class="flex items-center space-x-1 text-gold mb-3">
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
           </div>
-          <p class="text-sm text-gray-300 dark:text-gray-300 light:text-gray-600 italic">"Fast delivery, safe exchange of OwO currency. I was highly cautious initially but opening a ticket was incredibly straightforward and secure. Highly professional team."</p>
+          <p class="text-xs text-gray-300 italic">"Delivered the 10-key bundle safely. Great communication and swift guidance throughout the ticket."</p>
         </div>
-        <div class="flex items-center space-x-3 mt-6 pt-6 border-t border-gray-800 dark:border-gray-800 light:border-gray-100">
-          <div class="w-10 h-10 rounded-full bg-cyan flex items-center justify-center font-bold text-darkBlack">
-            S
-          </div>
-          <div>
-            <h4 class="text-sm font-bold text-white dark:text-white light:text-darkBlack">Slayer_OwO</h4>
-            <p class="text-xs text-gray-500">OwO Gamer</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 3 -->
-      <div class="p-6 bg-darkGray dark:bg-darkGray light:bg-white border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-3xl flex flex-col justify-between">
-        <div>
-          <div class="flex items-center space-x-1 text-gold mb-4">
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-          </div>
-          <p class="text-sm text-gray-300 dark:text-gray-300 light:text-gray-600 italic">"Acquired 10 Keys for my support server. Instant setup details inside my ticket and lifetime replacement terms make it completely risk-free. Definitely recommending this!"</p>
-        </div>
-        <div class="flex items-center space-x-3 mt-6 pt-6 border-t border-gray-800 dark:border-gray-800 light:border-gray-100">
-          <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center font-bold text-darkBlack">
+        <div class="flex items-center space-x-3 mt-5 pt-4 border-t border-gray-800">
+          <div class="w-8 h-8 rounded-full bg-cyan flex items-center justify-center text-xs font-bold text-darkBlack">
             K
           </div>
           <div>
-            <h4 class="text-sm font-bold text-white dark:text-white light:text-darkBlack">KiraWeb</h4>
-            <p class="text-xs text-gray-500">Community Manager</p>
+            <h4 class="text-xs font-bold text-white">Kev_O</h4>
+            <p class="text-[10px] text-gray-500">Community Lead</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="p-5 bg-darkGray border border-gray-800 rounded-2xl flex flex-col justify-between hover:border-blurple/30 transition-all">
+        <div>
+          <div class="flex items-center space-x-1 text-gold mb-3">
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+            <i data-lucide="star" class="w-4.5 h-4.5 fill-current"></i>
+          </div>
+          <p class="text-xs text-gray-300 italic">"Quick transaction process. I ordered some OwO currency and it was hand-delivered in my server within minutes."</p>
+        </div>
+        <div class="flex items-center space-x-3 mt-5 pt-4 border-t border-gray-800">
+          <div class="w-8 h-8 rounded-full bg-gold flex items-center justify-center text-xs font-bold text-darkBlack">
+            S
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-white">Sora_X</h4>
+            <p class="text-[10px] text-gray-500">OwO Gamer</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ SECTION (Accordion) -->
-  <section id="faq" class="py-20 border-t border-gray-850 bg-darkGray/20 dark:bg-darkGray/20 light:bg-gray-100/30">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto space-y-4 mb-12">
-        <h2 class="text-3xl font-extrabold text-white dark:text-white light:text-darkBlack">Frequently Asked Questions</h2>
-        <p class="text-gray-400 dark:text-gray-400 light:text-gray-600">Got questions about deliveries, security, or customization? Find immediate answers below.</p>
+  <!-- FAQ SECTION -->
+  <section id="faq" class="py-16 bg-darkGray/20 border-t border-gray-850">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-3 mb-10">
+        <h2 class="text-2xl font-bold text-white">Frequently Asked Questions</h2>
+        <p class="text-xs text-gray-400">Common questions about key features, deliveries, and payment conversions.</p>
       </div>
 
-      <div class="space-y-4">
+      <div class="space-y-3">
         <!-- FAQ 1 -->
-        <div class="faq-item border border-gray-800 dark:border-gray-800 light:border-gray-200 bg-darkGray dark:bg-darkGray light:bg-white rounded-2xl overflow-hidden transition-colors">
-          <button onclick="toggleFAQ(this)" class="w-full flex items-center justify-between px-6 py-5 text-left text-white dark:text-white light:text-darkBlack font-semibold">
-            <span>How does the delivery process work?</span>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-200"></i>
+        <div class="border border-gray-800 bg-darkGray rounded-xl overflow-hidden">
+          <button onclick="toggleFAQ(this)" class="w-full flex items-center justify-between px-5 py-4 text-left text-white font-medium text-sm">
+            <span>How do I complete my purchase?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 transition-transform duration-200"></i>
           </button>
-          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-            <div class="px-6 pb-5 text-sm text-gray-400 dark:text-gray-400 light:text-gray-600 border-t border-gray-800 dark:border-gray-800 light:border-gray-100 pt-4">
-              Upon clicking "Buy" and confirming, you will be redirected to our Discord ticket channel. Create a purchase ticket, select your product, and our support staff will assist with setup, delivery instructions, and configuration inside 1–3 hours.
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-200">
+            <div class="px-5 pb-4 text-xs text-gray-400 border-t border-gray-850 pt-3 leading-relaxed">
+              Click the "Buy" button on any catalog card and select "Create Ticket" to open our official Discord support channel. Our agents will assist you and manage the setup directly inside the ticket space.
             </div>
           </div>
         </div>
 
         <!-- FAQ 2 -->
-        <div class="faq-item border border-gray-800 dark:border-gray-800 light:border-gray-200 bg-darkGray dark:bg-darkGray light:bg-white rounded-2xl overflow-hidden transition-colors">
-          <button onclick="toggleFAQ(this)" class="w-full flex items-center justify-between px-6 py-5 text-left text-white dark:text-white light:text-darkBlack font-semibold">
-            <span>What forms of payments do you accept?</span>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-200"></i>
+        <div class="border border-gray-800 bg-darkGray rounded-xl overflow-hidden">
+          <button onclick="toggleFAQ(this)" class="w-full flex items-center justify-between px-5 py-4 text-left text-white font-medium text-sm">
+            <span>What are the OwO payment equivalents?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 transition-transform duration-200"></i>
           </button>
-          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-            <div class="px-6 pb-5 text-sm text-gray-400 dark:text-gray-400 light:text-gray-600 border-t border-gray-800 dark:border-gray-800 light:border-gray-100 pt-4">
-              We process payments via popular digital checkout methods, and specifically accept standard key equivalents (e.g., OwO currency pairings as stated in our packages catalog). Detailed payment guidance is shared during the active support ticket.
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-200">
+            <div class="px-5 pb-4 text-xs text-gray-400 border-t border-gray-850 pt-3 leading-relaxed">
+              We offer multiple OwO conversion equivalents (for example, basic bot = 4M, professional setups = 5M, up to 11M for pro setups with custom bots). These values are displayed clearly on the product catalog layout.
             </div>
           </div>
         </div>
 
         <!-- FAQ 3 -->
-        <div class="faq-item border border-gray-800 dark:border-gray-800 light:border-gray-200 bg-darkGray dark:bg-darkGray light:bg-white rounded-2xl overflow-hidden transition-colors">
-          <button onclick="toggleFAQ(this)" class="w-full flex items-center justify-between px-6 py-5 text-left text-white dark:text-white light:text-darkBlack font-semibold">
-            <span>What guarantees apply to Key replacements?</span>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-200"></i>
+        <div class="border border-gray-800 bg-darkGray rounded-xl overflow-hidden">
+          <button onclick="toggleFAQ(this)" class="w-full flex items-center justify-between px-5 py-4 text-left text-white font-medium text-sm">
+            <span>Does the setup include bot hosting?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 transition-transform duration-200"></i>
           </button>
-          <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-            <div class="px-6 pb-5 text-sm text-gray-400 dark:text-gray-400 light:text-gray-600 border-t border-gray-800 dark:border-gray-800 light:border-gray-100 pt-4">
-              We provide a complete lifetime key replacement security. If the core configurations or service keys experience structural changes, open a ticket for free replacements. (Please note: keys authorize access only; ownership modifications and custom coding updates are not part of the standard key terms).
+          <div class="faq-content max-h-0 overflow-hidden transition-all duration-200">
+            <div class="px-5 pb-4 text-xs text-gray-400 border-t border-gray-850 pt-3 leading-relaxed">
+              Basic features and setup formats operate on public cloud components. For premium custom configurations and private bot designs, our hosting setup parameters will be customized based on your community's active loads.
             </div>
           </div>
         </div>
@@ -468,297 +477,353 @@
     </div>
   </section>
 
-  <!-- CONTACT / CALL-TO-ACTION SECTION -->
-  <section id="contact" class="py-20 relative overflow-hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="absolute inset-0 bg-blurple/5 rounded-3xl pointer-events-none"></div>
-    <div class="bg-gradient-to-br from-darkGray to-darkBlack dark:from-darkGray dark:to-darkBlack light:from-white light:to-gray-100 border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-3xl p-8 sm:p-12 lg:p-16 text-center space-y-6 relative z-10 shadow-xl">
-      <div class="w-16 h-16 bg-blurple/10 rounded-2xl flex items-center justify-center mx-auto text-blurple">
-        <i data-lucide="help-circle" class="w-8 h-8"></i>
+  <!-- CALL-TO-ACTION SECTION -->
+  <section id="contact" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-gradient-to-br from-darkGray to-darkBlack border border-gray-800 rounded-3xl p-8 sm:p-12 text-center space-y-5 relative overflow-hidden shadow-xl">
+      <div class="w-12 h-12 bg-blurple/10 rounded-xl flex items-center justify-center mx-auto text-blurple">
+        <i data-lucide="help-circle" class="w-6 h-6"></i>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white dark:text-white light:text-darkBlack">Ready to Upgrade Your Server?</h2>
-      <p class="text-gray-400 dark:text-gray-400 light:text-gray-600 max-w-xl mx-auto">
-        Join our dedicated Discord community to launch instant orders, request custom arrangements, and interact directly with support agents.
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Need Customized Configurations?</h2>
+      <p class="text-xs text-gray-400 max-w-md mx-auto">
+        Join our server, build a support ticket, and our developers will help you customize your server configuration or bot setup.
       </p>
 
-      <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-        <a href="https://discord.gg/xJXnrvkjyX" target="_blank" class="px-8 py-4 bg-blurple hover:bg-opacity-90 text-white font-bold rounded-2xl flex items-center justify-center space-x-3 transition-transform hover:-translate-y-0.5">
-          <i data-lucide="message-square" class="w-5 h-5"></i>
+      <div class="flex flex-col sm:flex-row justify-center gap-3 pt-2">
+        <a href="https://discord.gg/xJXnrvkjyX" target="_blank" class="px-6 py-3 bg-blurple hover:bg-opacity-95 text-white text-xs sm:text-sm font-bold rounded-xl flex items-center justify-center space-x-2 transition-transform hover:-translate-y-0.5">
+          <i data-lucide="message-square" class="w-4 h-4"></i>
           <span>Join Server</span>
         </a>
-        <a href="https://discord.com/channels/1510111812912283709/1510169440518406225" target="_blank" class="px-8 py-4 bg-transparent border border-gray-700 dark:border-gray-700 light:border-gray-300 text-white dark:text-white light:text-darkBlack font-bold rounded-2xl flex items-center justify-center space-x-3 hover:bg-gray-800 dark:hover:bg-gray-800 light:hover:bg-gray-200 transition-transform">
-          <i data-lucide="ticket" class="w-5 h-5"></i>
+        <a href="https://discord.com/channels/1510111812912283709/1510169440518406225" target="_blank" class="px-6 py-3 bg-transparent border border-gray-750 text-white text-xs sm:text-sm font-bold rounded-xl flex items-center justify-center space-x-2 hover:bg-gray-800 transition-transform">
+          <i data-lucide="ticket" class="w-4 h-4"></i>
           <span>Create Ticket</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- DETAILED INFO MODAL -->
+  <!-- FLOATING DISCORD INVITE BUTTON (Requirement 11) -->
+  <a href="https://discord.gg/xJXnrvkjyX" target="_blank" class="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-blurple hover:bg-opacity-95 text-white shadow-xl shadow-blurple/30 transition-transform hover:scale-110 flex items-center justify-center group" aria-label="Join Discord Server">
+    <i data-lucide="message-square" class="w-6 h-6"></i>
+    <span class="max-w-0 overflow-hidden whitespace-nowrap text-xs sm:text-sm font-semibold transition-all duration-350 group-hover:max-w-xs group-hover:ml-2">Join Discord</span>
+  </a>
+
+  <!-- ADMIN CONFIGURATION PANEL (Requirement 1 & 4 - Controls for Logo Upload & Total Members) -->
+  <div id="adminPanel" class="fixed bottom-6 left-6 z-40">
+    <button onclick="toggleAdminPanel()" class="p-3.5 rounded-full bg-gray-800 border border-gray-750 text-gray-300 hover:text-white shadow-lg transition-transform hover:rotate-45" title="Admin Settings Panel">
+      <i data-lucide="settings" class="w-5 h-5"></i>
+    </button>
+    
+    <!-- Config Card Container -->
+    <div id="adminPanelCard" class="hidden absolute bottom-16 left-0 w-72 bg-darkGray border border-gray-850 rounded-2xl p-5 shadow-2xl space-y-4 text-left">
+      <div class="flex items-center justify-between border-b border-gray-850 pb-2.5">
+        <span class="text-xs font-bold text-white flex items-center gap-1.5 uppercase tracking-wide">
+          <i data-lucide="sliders" class="w-3.5 h-3.5 text-blurple"></i>
+          <span>Admin Settings</span>
+        </span>
+        <button onclick="toggleAdminPanel()" class="text-gray-500 hover:text-white">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- 1. Logo Upload Trigger -->
+      <div class="space-y-1.5">
+        <label class="block text-[10px] uppercase tracking-wider text-gray-400 font-bold">Upload Custom Logo (logo.gif)</label>
+        <input 
+          type="file" 
+          id="logoFileInput" 
+          accept="image/gif, image/png, image/jpeg, image/webp" 
+          class="block w-full text-xs text-gray-400 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-blurple file:text-white hover:file:bg-opacity-90 cursor-pointer"
+        />
+        <button onclick="resetLogo()" class="text-[9px] text-cyan hover:underline block pt-1">Reset Default Logo</button>
+      </div>
+
+      <!-- 4. Member Counter Input -->
+      <div class="space-y-1.5 border-t border-gray-850 pt-2.5">
+        <label class="block text-[10px] uppercase tracking-wider text-gray-400 font-bold">Manual Total Members</label>
+        <input 
+          type="number" 
+          id="totalMembersInput" 
+          value="100" 
+          min="1" 
+          class="w-full bg-darkBlack text-white text-xs rounded-lg px-3 py-1.5 border border-gray-800 focus:outline-none focus:border-blurple"
+        />
+        <p class="text-[10px] text-gray-500 leading-normal">
+          Active and Online member counts are calculated automatically based on this total.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT INFO MODAL -->
   <div id="infoModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 opacity-0 pointer-events-none transition-all duration-300">
     <div onclick="closeInfoModal()" class="absolute inset-0 bg-darkBlack/80 backdrop-blur-sm"></div>
-    <div class="bg-darkGray dark:bg-darkGray light:bg-white border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-3xl w-full max-w-lg p-6 sm:p-8 relative z-10 shadow-2xl transition-all scale-95 overflow-y-auto max-h-[90vh]">
-      <button onclick="closeInfoModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white dark:hover:text-white light:hover:text-darkBlack">
-        <i data-lucide="x" class="w-6 h-6"></i>
+    <div class="bg-darkGray border border-gray-800 rounded-3xl w-full max-w-md p-6 relative z-10 shadow-2xl transition-all scale-95 overflow-y-auto max-h-[85vh]">
+      <button onclick="closeInfoModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
-      <div class="space-y-6">
-        <div class="flex items-center space-x-4">
-          <div id="modalIconContainer" class="w-14 h-14 rounded-2xl flex items-center justify-center text-blurple">
-            <!-- Icon sets automatically -->
+      <div class="space-y-5 text-left">
+        <div class="flex items-center space-x-3.5">
+          <div id="modalIconContainer" class="w-12 h-12 rounded-xl flex items-center justify-center text-blurple">
+            <!-- Icon Injected dynamically -->
           </div>
           <div>
-            <span id="modalCategory" class="text-[10px] uppercase font-bold tracking-widest text-blurple">CATEGORY</span>
-            <h3 id="modalTitle" class="text-2xl font-extrabold text-white dark:text-white light:text-darkBlack">Product Title</h3>
+            <span id="modalCategory" class="text-[9px] uppercase font-bold tracking-widest text-blurple">Category</span>
+            <h3 id="modalTitle" class="text-xl font-bold text-white">Product Title</h3>
           </div>
         </div>
 
-        <div class="border-t border-b border-gray-800 dark:border-gray-800 light:border-gray-150 py-4 space-y-2">
-          <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-400 dark:text-gray-400 light:text-gray-500">Price Structure</span>
-            <span id="modalPrice" class="text-xl font-bold text-gold">Price</span>
+        <div class="border-t border-b border-gray-850 py-3.5 space-y-1.5">
+          <div class="flex justify-between items-center text-xs">
+            <span class="text-gray-400">Rate (INR)</span>
+            <span id="modalPriceINR" class="font-semibold text-white">Rate</span>
+          </div>
+          <div class="flex justify-between items-center text-xs">
+            <span class="text-gray-400">Rate (OwO)</span>
+            <span id="modalPriceOwO" class="font-semibold text-gold">Rate</span>
           </div>
         </div>
 
-        <div class="space-y-3">
-          <h4 class="font-bold text-white dark:text-white light:text-darkBlack text-sm uppercase tracking-wide">Product Features</h4>
-          <ul id="modalFeatures" class="space-y-2 text-sm text-gray-400 dark:text-gray-400 light:text-gray-600">
-            <!-- Dynamic features list -->
+        <div class="space-y-2">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider">Features Included:</h4>
+          <ul id="modalFeatures" class="space-y-1.5 text-xs text-gray-400">
+            <!-- Features injected dynamically -->
           </ul>
         </div>
 
-        <!-- Notes section -->
-        <div id="modalNotesContainer" class="p-4 bg-darkBlack/60 dark:bg-darkBlack/60 light:bg-gray-100 rounded-2xl border border-gray-800 dark:border-gray-800 light:border-gray-200 space-y-1">
-          <h5 class="text-xs font-bold text-cyan flex items-center gap-1.5 uppercase">
+        <div id="modalNotesContainer" class="p-3 bg-darkBlack rounded-xl border border-gray-850 space-y-1">
+          <h5 class="text-[10px] font-bold text-cyan flex items-center gap-1 uppercase">
             <i data-lucide="info" class="w-3.5 h-3.5"></i>
-            <span>Deployment Info</span>
+            <span>Deployment Parameters</span>
           </h5>
-          <p id="modalNotes" class="text-xs text-gray-400 dark:text-gray-400 light:text-gray-500">Notice parameters regarding replacements and delivery rules.</p>
+          <p id="modalNotes" class="text-[11px] text-gray-500 leading-normal">Operational details regarding keys and setups.</p>
         </div>
 
-        <div class="flex gap-4">
-          <button onclick="closeInfoModal()" class="w-1/2 py-3 bg-gray-800 dark:bg-gray-800 light:bg-gray-200 hover:text-white dark:hover:text-white light:hover:text-darkBlack font-bold rounded-2xl transition-colors">
+        <div class="flex gap-3">
+          <button onclick="closeInfoModal()" class="w-1/2 py-2.5 bg-gray-800 hover:text-white font-semibold text-xs rounded-xl transition-colors">
             Close
           </button>
-          <button id="modalBuyBtn" class="w-1/2 py-3 bg-blurple hover:bg-opacity-90 text-white font-bold rounded-2xl transition-colors flex items-center justify-center space-x-2">
-            <i data-lucide="shopping-cart" class="w-4 h-4"></i>
-            <span>Order Now</span>
+          <button id="modalBuyBtn" class="w-1/2 py-2.5 bg-blurple hover:bg-opacity-90 text-white font-semibold text-xs rounded-xl transition-colors flex items-center justify-center space-x-1.5">
+            <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
+            <span>Order</span>
           </button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- BUY CONFIRMATION POPUP -->
+  <!-- BUY CONFIRMATION POPUP (Requirement 10) -->
   <div id="buyModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 opacity-0 pointer-events-none transition-all duration-300">
     <div onclick="closeBuyModal()" class="absolute inset-0 bg-darkBlack/80 backdrop-blur-sm"></div>
-    <div class="bg-darkGray dark:bg-darkGray light:bg-white border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-3xl w-full max-w-md p-6 sm:p-8 relative z-10 shadow-2xl transition-all scale-95 text-center space-y-6">
-      <div class="w-16 h-16 bg-blurple/10 rounded-full flex items-center justify-center mx-auto text-blurple">
-        <i data-lucide="ticket" class="w-8 h-8"></i>
+    <div class="bg-darkGray border border-gray-800 rounded-3xl w-full max-w-sm p-6 relative z-10 shadow-2xl transition-all scale-95 text-center space-y-5">
+      <div class="w-12 h-12 bg-blurple/10 rounded-full flex items-center justify-center mx-auto text-blurple">
+        <i data-lucide="ticket" class="w-6 h-6"></i>
       </div>
 
-      <div class="space-y-2">
-        <h3 class="text-xl font-bold text-white dark:text-white light:text-darkBlack">Purchase via Discord</h3>
-        <p class="text-sm text-gray-400 dark:text-gray-400 light:text-gray-600">
+      <div class="space-y-1.5">
+        <h3 class="text-lg font-bold text-white">Purchase via Discord</h3>
+        <p class="text-xs text-gray-400">
           Create a ticket to purchase this product?
         </p>
-        <p id="buyModalProdName" class="text-sm font-bold text-gold italic">Product Name</p>
+        <p id="buyModalProdName" class="text-xs font-bold text-gold italic pt-0.5">Product Name</p>
       </div>
 
-      <div class="flex gap-4">
-        <button onclick="closeBuyModal()" class="w-1/2 py-3 bg-gray-800 dark:bg-gray-800 light:bg-gray-200 hover:text-white dark:hover:text-white light:hover:text-darkBlack font-bold rounded-2xl transition-colors">
+      <div class="flex gap-3">
+        <button onclick="closeBuyModal()" class="w-1/2 py-2.5 bg-gray-800 hover:text-white text-xs font-bold rounded-xl transition-colors">
           Cancel
         </button>
-        <a id="buyModalConfirmBtn" href="https://discord.com/channels/1510111812912283709/1510169440518406225" target="_blank" onclick="closeBuyModal()" class="w-1/2 py-3 bg-blurple hover:bg-opacity-90 text-white font-bold rounded-2xl transition-colors flex items-center justify-center space-x-2">
+        <a id="buyModalConfirmBtn" href="https://discord.com/channels/1510111812912283709/1510169440518406225" target="_blank" onclick="closeBuyModal()" class="w-1/2 py-2.5 bg-blurple hover:bg-opacity-90 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center space-x-1">
           <span>Create Ticket</span>
         </a>
       </div>
     </div>
   </div>
 
-  <!-- FLOATING DISCORD BUTTON -->
-  <a href="https://discord.gg/xJXnrvkjyX" target="_blank" class="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-blurple hover:bg-opacity-95 text-white shadow-xl shadow-blurple/30 transition-transform hover:scale-110 flex items-center justify-center group" aria-label="Join Discord Server">
-    <i data-lucide="message-square" class="w-6 h-6"></i>
-    <span class="max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold transition-all group-hover:max-w-xs group-hover:ml-2">Join Discord</span>
-  </a>
-
   <!-- FOOTER -->
-  <footer class="bg-darkGray border-t border-gray-800 dark:border-gray-800 light:border-gray-200 py-12 transition-colors">
+  <footer class="bg-darkGray border-t border-gray-850 py-10 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-gray-850 pb-8 mb-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-gray-850 pb-6 mb-6">
         <div class="flex items-center space-x-3">
           <div class="w-8 h-8 rounded-lg bg-blurple flex items-center justify-center">
-            <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+            <i data-lucide="bot" class="w-4.5 h-4.5 text-white"></i>
           </div>
-          <span class="text-lg font-bold text-white dark:text-white light:text-darkBlack">TDS BOTS</span>
+          <span class="text-base font-bold text-white">TDS BOTs</span>
         </div>
-        <p class="text-xs text-gray-400 dark:text-gray-400 light:text-gray-500">Professional Discord integrations and server builds. Fast, clean, and optimized.</p>
+        <p class="text-[11px] text-gray-500">Premium integrations, customized bots, and modern layout design.</p>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-500 gap-4">
         <p>&copy; 2026 TDS BOTs. All rights reserved.</p>
-        <div class="flex space-x-6">
+        <div class="flex space-x-4">
           <a href="#products" class="hover:text-blurple">Products</a>
           <a href="#about" class="hover:text-blurple">About</a>
-          <a href="https://discord.gg/xJXnrvkjyX" target="_blank" class="hover:text-blurple">Support Discord</a>
+          <a href="https://discord.gg/xJXnrvkjyX" target="_blank" class="hover:text-blurple">Discord Server</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- CORE SCRIPT -->
+  <!-- SCRIPT LOGIC -->
   <script>
-    // Initialize Lucide Icons
+    // Initialize Icon Library
     lucide.createIcons();
 
-    // Static Products DB
+    // 3. Complete Products DB with Price changes and equivalents
     const products = [
       {
         id: "owo-currency",
         name: "🦉 OwO Currency",
         category: "owo",
-        price: "₹25 / Million",
-        shortDesc: "Boost your inventory with fast and ultra-safe delivery terms.",
+        priceINR: "₹25 / Million",
+        priceOwO: "M = 1 Million",
+        shortDesc: "Boost your balance with fast, reliable, and secure in-game transactions.",
         icon: "gem",
         colorClass: "text-gold bg-gold/10",
         features: [
-          "Fast delivery within hours",
-          "Completely safe trading patterns",
-          "Bulk order arrangements accepted"
+          "Instant handling process",
+          "Ultra-safe in-game transfer parameters",
+          "Bulk arrangements welcome"
         ],
-        notes: "Orders are hand-delivered safely within game parameters inside our verified support ticket."
+        notes: "Coins are hand-delivered within standard game formats in our support ticket channels."
       },
       {
         id: "key-1",
         name: "🔑 1 Key",
         category: "keys",
-        price: "₹50 or 2M OwO",
-        shortDesc: "Gain swift access to primary features.",
+        priceINR: "₹50",
+        priceOwO: "2M OwO",
+        shortDesc: "Unlock instant access to core system modules.",
         icon: "key",
         colorClass: "text-cyan bg-cyan/10",
         features: [
-          "Secure access to core bot features",
-          "Fast configuration setups",
-          "Lifetime replacement if core changes apply"
+          "Full access to main bot system parameters",
+          "Fast system configurations",
+          "Lifetime key guarantees if features adjust"
         ],
-        notes: "Access to bot features only. Account ownership customization and special requests are not included."
+        notes: "Covers key-specific access only. Core ownership changes or custom requests are not part of this package."
       },
       {
         id: "key-10",
         name: "🔑 10 Keys Combo",
         category: "keys",
-        price: "₹300 or 6M OwO",
-        shortDesc: "Bulk licensing keys optimized for growing server infrastructures.",
+        priceINR: "₹300",
+        priceOwO: "6M OwO",
+        shortDesc: "Bulk key bundle designed to scale your server infrastructure.",
         icon: "key-round",
         colorClass: "text-cyan bg-cyan/10",
         features: [
-          "10 Individual activation channels",
-          "Bulk order pricing discount applied",
-          "Full replacement setups terms if changes apply"
+          "10 Individual activation keys",
+          "Bulk conversion discount rate",
+          "Lifetime key guarantees if features adjust"
         ],
-        notes: "Exclusive access. Ownership parameters are restricted to standard activation rules."
+        notes: "Keys are activated instantly via support ticket authorization logs."
       },
       {
         id: "basic-bot",
         name: "🤖 Basic Bot",
         category: "bots",
-        price: "₹100",
-        shortDesc: "Add automatic server management utilities effortlessly.",
+        priceINR: "₹100",
+        priceOwO: "4M OwO",
+        shortDesc: "Automatic management features to easily configure welcoming and tracking.",
         icon: "bot",
         colorClass: "text-blurple bg-blurple/10",
         features: [
-          "Custom welcome messages",
-          "Custom goodbye configurations",
-          "Interactive auto-responses",
-          "Clean layout, high-performance runtime"
+          "Custom welcome layouts",
+          "Custom goodbye logs",
+          "Interactive auto-responders",
+          "Optimized 24/7 server hosting"
         ],
-        notes: "Usually configured and completed within 1 to 3 hours from ticket launch."
+        notes: "Generally configured and configured directly within 1 to 3 hours from ticket launch."
       },
       {
         id: "personal-op-bot",
         name: "🤖 Personal OP Bot",
         category: "bots",
-        price: "₹200",
-        shortDesc: "A robust, fully custom server core bot tailored for private utilities.",
+        priceINR: "₹200",
+        priceOwO: "8M OwO",
+        shortDesc: "A robust, customized private client bot with deep automation.",
         icon: "cpu",
         colorClass: "text-blurple bg-blurple/10",
         features: [
-          "Integrated AI Chat Engine",
-          "Secure checkout/payment redirection",
-          "Automated auth and software key system",
-          "Advanced custom automations",
-          "Fully customized layout (Name, Avatar, Banner)"
+          "Fully integrated AI Chat component",
+          "Payment flow redirects and checks",
+          "Integrated authentication and custom license keys",
+          "Completely custom avatar, name, and profile banners"
         ],
-        notes: "Configured strictly for private operations. Build delivery completed inside 48 hours."
+        notes: "Designed for private server activities only. Build completed and checked within 48 hours."
       },
       {
         id: "server-setup-basic",
         name: "🛠 Server Setup",
         category: "server-setup",
-        price: "₹70",
-        shortDesc: "Clean channel layouts and configurations to quickly launch.",
+        priceINR: "₹70",
+        priceOwO: "3M OwO",
+        shortDesc: "Clean community structure configurations to easily host your new community.",
         icon: "settings",
         colorClass: "text-amber-500 bg-amber-500/10",
         features: [
-          "Professional high-quality channel architectures",
-          "Thematic categories setup",
-          "Comprehensive system role hierarchy mapping"
+          "Modern category allocations",
+          "Themed visual channels",
+          "Optimized system roles hierarchy setup"
         ],
-        notes: "Handcrafted layout designed according to your exact target community topic."
+        notes: "Handcrafted server builds customized according to your exact target community topic."
       },
       {
         id: "server-setup-pro",
         name: "🛠 Professional Server Setup",
         category: "server-setup",
-        price: "₹130",
-        shortDesc: "An advanced server launch setup packed with interactive operations.",
+        priceINR: "₹130",
+        priceOwO: "5M OwO",
+        shortDesc: "Premium setup including robust ticket components and automated channels.",
         icon: "wrench",
         colorClass: "text-amber-500 bg-amber-500/10",
         features: [
-          "Interactive custom ticket interface",
-          "Automated welcome configuration",
-          "Auto goodbye logs",
-          "Complex custom roles security maps"
+          "Professional custom ticket setups",
+          "Automated welcome log triggers",
+          "Automated goodbye logs",
+          "Optimized advanced system role hierarchy"
         ],
-        notes: "Provides everything standard. Support staff guides setup through screen share if needed."
+        notes: "Complete structure configuration. Staff guides server transfer process cleanly."
       },
       {
         id: "server-setup-bots",
         name: "🛠 Pro Server Setup with Bots",
         category: "server-setup",
-        price: "₹200",
-        shortDesc: "A complete environment backed by active tools.",
+        priceINR: "₹200",
+        priceOwO: "8M OwO",
+        shortDesc: "A powerful, fully-managed layout configured with active utilities.",
         icon: "layers",
         colorClass: "text-amber-500 bg-amber-500/10",
         features: [
-          "Includes all professional layout elements",
-          "Interactive auto responses & reaction triggers",
-          "Anti-Nuke system & raid-shield integrations",
-          "Optimized high-fidelity music bot configurations",
-          "Seamless community onboarding screens setup"
+          "Includes all Professional Setup assets",
+          "Auto responses & reaction roles",
+          "Secure onboarding components",
+          "Anti-Nuke system & active anti-raid shields",
+          "Premium music bot integrations"
         ],
-        notes: "Maximum security tier preventing destructive raids instantly upon build."
+        notes: "Perfect for growing gaming communities requiring active security frameworks."
       },
       {
         id: "server-setup-ultimate",
         name: "🛠 Pro Setup + Personal Bot",
         category: "server-setup",
-        price: "₹270",
-        shortDesc: "The ultimate package. Fully custom branding and full operational bots.",
+        priceINR: "₹270",
+        priceOwO: "11M OwO",
+        shortDesc: "The ultimate package. A complete server layout and customized bots.",
         icon: "crown",
         colorClass: "text-gold bg-gold/10",
         features: [
-          "Everything in Pro Server setup layout",
-          "100% branded personal AI chat bot config",
-          "Automated reactions and premium voucher toolset",
-          "Dedicated web search engine utilities",
-          "Single-click system payment tracking tools",
-          "Server details diagnostics dashboard suite"
+          "Includes all Pro Server Setup with Bots assets",
+          "100% custom-branded personal bot configuration",
+          "Deep AI chatbot component modules",
+          "Single-click payment tracking integration",
+          "Custom reactions & premium voucher logging systems"
         ],
-        notes: "Our gold standard layout. Complete delivery guaranteed within 48 hours."
+        notes: "Our gold tier layout. Complete design delivery is checked and completed within 48 hours."
       }
     ];
 
-    // Current filter states
+    // Current filter parameters
     let activeCategory = 'all';
     let searchQuery = '';
 
@@ -771,8 +836,7 @@
       const filtered = products.filter(p => {
         const matchesCategory = activeCategory === 'all' || p.category === activeCategory;
         const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                              p.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                              p.features.some(f => f.toLowerCase().includes(searchQuery.toLowerCase()));
+                              p.shortDesc.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesCategory && matchesSearch;
       });
 
@@ -783,29 +847,39 @@
         emptyState.classList.add('hidden');
         grid.classList.remove('hidden');
 
-        filtered.forEach(p => {
+        filtered.forEach((p, idx) => {
           const card = document.createElement('div');
-          // Responsive Tailwind product card matching premium requirements
-          card.className = "bg-darkGray dark:bg-darkGray light:bg-white border border-gray-800 dark:border-gray-800 light:border-gray-200 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-blurple/50 hover:shadow-xl hover:shadow-blurple/5 relative overflow-hidden group";
           
+          // Hover and entrance transition animations on cards
+          card.className = "bg-darkGray border border-gray-800 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-blurple/50 hover:shadow-xl hover:shadow-blurple/5 relative overflow-hidden group fade-in-up";
+          card.style.animationDelay = `${idx * 50}ms`;
+
           card.innerHTML = `
             <div>
               <div class="flex items-center justify-between mb-4">
                 <div class="w-12 h-12 rounded-2xl flex items-center justify-center ${p.colorClass}">
-                  <i data-lucide="${p.icon}" class="w-6 h-6"></i>
+                  <i data-lucide="${p.icon}" class="w-5 h-5"></i>
                 </div>
-                <span class="text-xs font-bold text-gold tracking-wide bg-gold/10 px-3 py-1 rounded-full border border-gold/20">${p.price}</span>
+                
+                <!-- Display Large Pricing clearly (INR + OwO equivalents) -->
+                <div class="text-right">
+                  <div class="text-base sm:text-lg font-black text-white leading-none">${p.priceINR}</div>
+                  <div class="text-[10px] font-semibold text-gold mt-1 uppercase tracking-wider">${p.priceOwO}</div>
+                </div>
               </div>
-              <h3 class="text-lg font-bold text-white dark:text-white light:text-darkBlack group-hover:text-blurple transition-colors">${p.name}</h3>
-              <p class="text-xs text-gray-400 dark:text-gray-400 light:text-gray-500 mt-2 leading-relaxed">${p.shortDesc}</p>
+              <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-blurple transition-colors">${p.name}</h3>
+              <p class="text-xs text-gray-400 mt-2 leading-relaxed">${p.shortDesc}</p>
             </div>
             
             <div class="grid grid-cols-2 gap-3 mt-6">
-              <button onclick="openInfoModal('${p.id}')" class="py-2.5 bg-gray-800 dark:bg-gray-800 light:bg-gray-100 hover:bg-gray-700 dark:hover:bg-gray-700 light:hover:bg-gray-200 text-gray-300 dark:text-gray-300 light:text-gray-700 font-bold text-xs rounded-xl transition-colors flex items-center justify-center space-x-1.5">
+              <!-- Info Button triggers product modal -->
+              <button onclick="openInfoModal('${p.id}')" class="py-2.5 bg-darkBlack hover:bg-gray-800 text-gray-300 font-bold text-xs rounded-xl transition-all flex items-center justify-center space-x-1 hover:scale-[1.02]">
                 <i data-lucide="info" class="w-3.5 h-3.5"></i>
                 <span>Info</span>
               </button>
-              <button onclick="openBuyModal('${p.name}')" class="py-2.5 bg-blurple hover:bg-opacity-90 text-white font-bold text-xs rounded-xl transition-colors flex items-center justify-center space-x-1.5">
+              
+              <!-- Buy Button triggers confirmation modal -->
+              <button onclick="openBuyModal('${p.name}')" class="py-2.5 bg-blurple hover:bg-opacity-90 text-white font-bold text-xs rounded-xl transition-all flex items-center justify-center space-x-1 hover:scale-[1.02] shadow-md hover:shadow-blurple/15">
                 <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
                 <span>Buy</span>
               </button>
@@ -817,58 +891,28 @@
       lucide.createIcons();
     }
 
-    // Category Buttons Switcher
+    // Category button handler
     function filterCategory(category) {
       activeCategory = category;
       document.querySelectorAll('[data-category-btn]').forEach(btn => {
         btn.classList.remove('bg-blurple', 'text-white', 'active');
-        btn.classList.add('bg-gray-800', 'dark:bg-gray-800', 'light:bg-gray-100', 'text-gray-400', 'dark:text-gray-400', 'light:text-gray-600');
+        btn.classList.add('bg-darkBlack', 'text-gray-400');
       });
 
       const activeBtn = document.querySelector(`[data-category-btn="${category}"]`);
       if (activeBtn) {
-        activeBtn.classList.remove('bg-gray-800', 'dark:bg-gray-800', 'light:bg-gray-100', 'text-gray-400', 'dark:text-gray-400', 'light:text-gray-600');
+        activeBtn.classList.remove('bg-darkBlack', 'text-gray-400');
         activeBtn.classList.add('bg-blurple', 'text-white', 'active');
       }
       renderProducts();
     }
 
-    // Search input listener
     document.getElementById('searchInput').addEventListener('input', (e) => {
       searchQuery = e.target.value;
       renderProducts();
     });
 
-    // Theme Switcher Logic
-    const themeToggleBtn = document.getElementById('themeToggle');
-    const sunIcon = document.getElementById('sunIcon');
-    const moonIcon = document.getElementById('moonIcon');
-
-    themeToggleBtn.addEventListener('click', () => {
-      if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.classList.add('light');
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
-        localStorage.setItem('theme', 'light');
-      } else {
-        document.documentElement.classList.remove('light');
-        document.documentElement.classList.add('dark');
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-        localStorage.setItem('theme', 'dark');
-      }
-    });
-
-    // Handle initial state of theme
-    if (localStorage.getItem('theme') === 'light') {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
-      sunIcon.classList.remove('hidden');
-      moonIcon.classList.add('hidden');
-    }
-
-    // FAQ Accordion Logic
+    // FAQ Accordions
     function toggleFAQ(button) {
       const parent = button.parentElement;
       const content = parent.querySelector('.faq-content');
@@ -876,7 +920,6 @@
       
       const isOpen = !content.style.maxHeight || content.style.maxHeight === '0px';
 
-      // Close other accordion elements
       document.querySelectorAll('.faq-content').forEach(el => {
         el.style.maxHeight = '0px';
       });
@@ -893,7 +936,7 @@
       }
     }
 
-    // Modals Logic
+    // Modals Control
     const infoModal = document.getElementById('infoModal');
     const buyModal = document.getElementById('buyModal');
 
@@ -903,20 +946,19 @@
 
       document.getElementById('modalTitle').innerText = p.name;
       document.getElementById('modalCategory').innerText = p.category.replace('-', ' ');
-      document.getElementById('modalPrice').innerText = p.price;
+      document.getElementById('modalPriceINR').innerText = p.priceINR;
+      document.getElementById('modalPriceOwO').innerText = p.priceOwO;
       document.getElementById('modalNotes').innerText = p.notes;
 
-      // Icon display
       const iconContainer = document.getElementById('modalIconContainer');
-      iconContainer.className = `w-14 h-14 rounded-2xl flex items-center justify-center ${p.colorClass}`;
-      iconContainer.innerHTML = `<i data-lucide="${p.icon}" class="w-8 h-8"></i>`;
+      iconContainer.className = `w-12 h-12 rounded-xl flex items-center justify-center ${p.colorClass}`;
+      iconContainer.innerHTML = `<i data-lucide="${p.icon}" class="w-6 h-6"></i>`;
 
-      // Set features
       const featuresUl = document.getElementById('modalFeatures');
       featuresUl.innerHTML = '';
       p.features.forEach(feature => {
         const li = document.createElement('li');
-        li.className = 'flex items-start space-x-2.5';
+        li.className = 'flex items-start space-x-2';
         li.innerHTML = `
           <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan mt-0.5 shrink-0"></i>
           <span>${feature}</span>
@@ -924,13 +966,11 @@
         featuresUl.appendChild(li);
       });
 
-      // Confirm button listener
       document.getElementById('modalBuyBtn').onclick = () => {
         closeInfoModal();
         openBuyModal(p.name);
       };
 
-      // Open Modal
       infoModal.classList.remove('opacity-0', 'pointer-events-none');
       infoModal.querySelector('div:nth-child(2)').classList.remove('scale-95');
       infoModal.querySelector('div:nth-child(2)').classList.add('scale-100');
@@ -962,22 +1002,91 @@
       document.body.style.overflow = '';
     }
 
-    // Dynamic fake Discord counters just to bring interactivity alive (Nice to have 4)
-    setInterval(() => {
-      const changeOnline = Math.floor(Math.random() * 5) - 2; // -2 to +2
-      const changeMembers = Math.floor(Math.random() * 2); // 0 to 1
-      
-      const onlineSpan = document.getElementById('onlineCounter');
-      const memberSpan = document.getElementById('memberCounter');
+    // Admin Panel Actions
+    const adminPanelCard = document.getElementById('adminPanelCard');
+    function toggleAdminPanel() {
+      adminPanelCard.classList.toggle('hidden');
+    }
 
-      const currentOnline = parseInt(onlineSpan.innerText.replace(',', ''));
-      const currentMembers = parseInt(memberSpan.innerText.replace(',', ''));
+    // 1. Logo Upload Logic & Storage Management
+    const logoFileInput = document.getElementById('logoFileInput');
+    const topLeftLogo = document.getElementById('topLeftLogo');
+    const floatingCenterLogo = document.getElementById('floatingCenterLogo');
 
-      onlineSpan.innerText = (currentOnline + changeOnline).toLocaleString();
-      memberSpan.innerText = (currentMembers + changeMembers).toLocaleString();
-    }, 12000);
+    logoFileInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
 
-    // Initial render call
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const base64Image = event.target.result;
+        
+        // Save to LocalStorage
+        localStorage.setItem('tds_custom_logo', base64Image);
+        
+        // Instantly Update DOM logos
+        topLeftLogo.src = base64Image;
+        floatingCenterLogo.src = base64Image;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function resetLogo() {
+      localStorage.removeItem('tds_custom_logo');
+      topLeftLogo.src = 'logo.gif';
+      floatingCenterLogo.src = 'logo.gif';
+      logoFileInput.value = '';
+    }
+
+    // Load logo state
+    function loadSavedLogo() {
+      const savedLogo = localStorage.getItem('tds_custom_logo');
+      if (savedLogo) {
+        topLeftLogo.src = savedLogo;
+        floatingCenterLogo.src = savedLogo;
+      } else {
+        topLeftLogo.src = 'logo.gif';
+        floatingCenterLogo.src = 'logo.gif';
+      }
+    }
+
+    // 4. Member Counter Manual and Automated Logic
+    const totalMembersInput = document.getElementById('totalMembersInput');
+    const dispTotalMembers = document.getElementById('dispTotalMembers');
+    const dispActiveMembers = document.getElementById('dispActiveMembers');
+    const dispOnlineMembers = document.getElementById('dispOnlineMembers');
+
+    function updateMemberCounters(totalCount) {
+      // Automatic calculations:
+      // Active = ~40% of Total Members
+      // Online = ~15% of Total Members
+      const activeCount = Math.floor(totalCount * 0.4);
+      const onlineCount = Math.floor(totalCount * 0.15);
+
+      dispTotalMembers.innerText = Number(totalCount).toLocaleString();
+      dispActiveMembers.innerText = activeCount.toLocaleString();
+      dispOnlineMembers.innerText = onlineCount.toLocaleString();
+    }
+
+    totalMembersInput.addEventListener('input', function(e) {
+      let count = parseInt(e.target.value);
+      if (isNaN(count) || count < 1) {
+        count = 1;
+      }
+      localStorage.setItem('tds_member_count', count);
+      updateMemberCounters(count);
+    });
+
+    function loadSavedMembers() {
+      const savedCount = localStorage.getItem('tds_member_count');
+      const initialCount = savedCount ? parseInt(savedCount) : 100;
+      totalMembersInput.value = initialCount;
+      updateMemberCounters(initialCount);
+    }
+
+    // Initialize application values
+    loadSavedLogo();
+    loadSavedMembers();
     renderProducts();
   </script>
 </body>
